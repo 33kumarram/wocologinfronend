@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Tab } from "@mui/material";
 import { TabList, TabContext, TabPanel } from "@mui/lab";
-import { LogIn } from "../Authentication/LogIn";
-import { SignUp } from "../Authentication/SignUp";
+import { LogIn } from "../Authentication/LogIn"
+import { SignUp } from "../Authentication/SignUp"
 import "./LoginPage.css";
 
 export const LoginPage = () => {

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { API_URLS } from "../Services/ApiUrls";
 import { useDispatch } from "react-redux";
-import { actionCreators } from "../../Redux/actionCreators/index";
+import { actionCreators } from "../Redux/actionCreators/index";
 import { bindActionCreators } from "redux";
 import { CustomAlert } from "../customAlerts/customAlert";
 
@@ -41,6 +41,7 @@ export const LogIn = () => {
     try {
       let res = await API_URLS.userLogIn(fields);
       // saving user data in redux state
+      console.log(res)
       userLogIn(res.data);
       showAlert("Logged in Successfully", "success");
       setTimeout(() => {
