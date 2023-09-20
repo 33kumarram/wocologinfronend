@@ -105,11 +105,11 @@ export const SignUp = () => {
                   style={{ backgroundColor: "inherit" }}
                   className={
                     "form-control" +
-                    (errors.firs_name && touched.last_name ? " is-invalid" : "")
+                    (errors.first_name && touched.first_name ? " is-invalid" : "")
                   }
                 />
                 <ErrorMessage
-                  name="name"
+                  name="first_name"
                   component="div"
                   className="invalid-feedback"
                 />
@@ -127,7 +127,7 @@ export const SignUp = () => {
                   }
                 />
                 <ErrorMessage
-                  name="name"
+                  name="last_name"
                   component="div"
                   className="invalid-feedback"
                 />

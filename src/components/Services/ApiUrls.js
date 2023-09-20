@@ -22,8 +22,17 @@ function userLogIn(params) {
   });
 }
 
+function updateUserDetails(id,params) {
+  return axiosInstances({
+    url: `${baseURL}/users/updateuserdetails/${id}`,
+    method: "put",
+    data: params,
+  });
+}
+
 
 export const API_URLS = {
   userSignUp,
   userLogIn,
+  updateUserDetails
 };
