@@ -44,6 +44,9 @@ export const SignUp = () => {
   };
 
   const onSubmit = async (fields, setFieldValue) => {
+    // to make first letter capital and remaining letters in small
+    fields.first_name = fields.first_name.charAt(0).toUpperCase() + fields.first_name.slice(1).toLowerCase();
+    fields.last_name = fields.last_name.charAt(0).toUpperCase() + fields.last_name.slice(1).toLowerCase();
     setIsSubmitting(true);
     try {
       let { isSuccess } = await API_URLS.userSignUp(fields);
@@ -96,79 +99,83 @@ export const SignUp = () => {
                   className="invalid-feedback"
                 />
               </div>
-              <div className="m-3">
-                <label className="form-label text-lefts">First Name *</label>
-                <Field
-                  type="text"
-                  name="first_name"
-                  placeholder="First Name"
-                  style={{ backgroundColor: "inherit" }}
-                  className={
-                    "form-control" +
-                    (errors.first_name && touched.first_name ? " is-invalid" : "")
-                  }
-                />
-                <ErrorMessage
-                  name="first_name"
-                  component="div"
-                  className="invalid-feedback"
-                />
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div className="m-3">
+                  <label className="form-label text-lefts">First Name *</label>
+                  <Field
+                    type="text"
+                    name="first_name"
+                    placeholder="First Name"
+                    style={{ backgroundColor: "inherit" }}
+                    className={
+                      "form-control" +
+                      (errors.first_name && touched.first_name ? " is-invalid" : "")
+                    }
+                  />
+                  <ErrorMessage
+                    name="first_name"
+                    component="div"
+                    className="invalid-feedback"
+                  />
+                </div>
+                <div className="m-3">
+                  <label className="form-label text-lefts">Last Name *</label>
+                  <Field
+                    type="text"
+                    name="last_name"
+                    placeholder="Last Name"
+                    style={{ backgroundColor: "inherit" }}
+                    className={
+                      "form-control" +
+                      (errors.last_name && touched.last_name ? " is-invalid" : "")
+                    }
+                  />
+                  <ErrorMessage
+                    name="last_name"
+                    component="div"
+                    className="invalid-feedback"
+                  />
+                </div>
               </div>
-              <div className="m-3">
-                <label className="form-label text-lefts">Last Name *</label>
-                <Field
-                  type="text"
-                  name="last_name"
-                  placeholder="Last Name"
-                  style={{ backgroundColor: "inherit" }}
-                  className={
-                    "form-control" +
-                    (errors.last_name && touched.last_name ? " is-invalid" : "")
-                  }
-                />
-                <ErrorMessage
-                  name="last_name"
-                  component="div"
-                  className="invalid-feedback"
-                />
-              </div>
-              <div className="m-3">
-                <label className="form-label">Password *</label>
-                <Field
-                  type="text"
-                  name="password"
-                  placeholder="Enter Password"
-                  style={{ backgroundColor: "inherit" }}
-                  className={
-                    "form-control" +
-                    (errors.password && touched.password ? " is-invalid" : "")
-                  }
-                />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="invalid-feedback"
-                />
-              </div>
-              <div className="m-3">
-                <label className="form-label">Confirm Password *</label>
-                <Field
-                  type="password"
-                  name="confirm_password"
-                  placeholder="Confirm Password"
-                  style={{ backgroundColor: "inherit" }}
-                  className={
-                    "form-control" +
-                    (errors.confirm_password && touched.confirm_password
-                      ? " is-invalid"
-                      : "")
-                  }
-                />
-                <ErrorMessage
-                  name="confirm_password"
-                  component="div"
-                  className="invalid-feedback"
-                />
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div className="m-3">
+                  <label className="form-label">Password *</label>
+                  <Field
+                    type="text"
+                    name="password"
+                    placeholder="Enter Password"
+                    style={{ backgroundColor: "inherit" }}
+                    className={
+                      "form-control" +
+                      (errors.password && touched.password ? " is-invalid" : "")
+                    }
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="invalid-feedback"
+                  />
+                </div>
+                <div className="m-3">
+                  <label className="form-label">Confirm Password *</label>
+                  <Field
+                    type="password"
+                    name="confirm_password"
+                    placeholder="Confirm Password"
+                    style={{ backgroundColor: "inherit" }}
+                    className={
+                      "form-control" +
+                      (errors.confirm_password && touched.confirm_password
+                        ? " is-invalid"
+                        : "")
+                    }
+                  />
+                  <ErrorMessage
+                    name="confirm_password"
+                    component="div"
+                    className="invalid-feedback"
+                  />
+                </div>
               </div>
               <button
                 className="m-4 btn btn-primary"

@@ -47,6 +47,8 @@ export const HomePage = () => {
     };
 
     const onSubmit = async (fields, setFieldValue) => {
+        fields.first_name = fields.first_name.charAt(0).toUpperCase() + fields.first_name.slice(1).toLowerCase();
+        fields.last_name = fields.last_name.charAt(0).toUpperCase() + fields.last_name.slice(1).toLowerCase();
         setIsSubmitting(true);
         try {
             let { isSuccess, data } = await API_URLS.updateUserDetails(user._id, fields);
@@ -72,16 +74,16 @@ export const HomePage = () => {
     }
     return (
         <div style={{ display: "flex", flexDirection: 'column', alignItems: "center", margin: "auto", paddingTop: '20px', gap: '50px' }}>
-            <div style={{ width: '100%', display: "flex", justifyContent: "flex-end" }}>
+            <div style={{ width: '100%', display: "flex", justifyContent: "flex-end", color: "red" }}>
                 <Button onClick={LogOut}><LogoutIcon /></Button>
             </div>
+            {alert && <CustomAlert alert={alert} />}
             <h3>User Details
                 <button style={{ border: 'none', background: 'inherit' }}
                     onClick={() => { setDisabled(!disabled) }}>
-                    <EditIcon />
+                    <EditIcon size="small" />
                 </button>
             </h3>
-            {alert && <CustomAlert alert={alert} />}
             <Formik
                 initialValues={initialValues}
                 onSubmit={onSubmit}
@@ -168,7 +170,15 @@ export const HomePage = () => {
                                         </TableRow>
                                     </TableBody>
                                 </Table>
-                                {!disabled ? <Button type='submit' variant="outlined" color="primary">Save</Button> : null}
+                                {!disabled ?
+                                    <Button
+                                        type='submit'
+                                        disabled={isSubmitting}
+                                        variant="outlined"
+                                        color="primary">
+                                        Save
+                                    </Button>
+                                    : null}
                             </Form>
                         </fieldset>
                     );
